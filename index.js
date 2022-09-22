@@ -17,12 +17,8 @@ app.get('/', (req, res) => {
 // });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
   socket.on('chatMsg', (msg) => {
-    console.log('message: ' + msg);
+    io.emit('chatMsg', msg);
   });
 });
 
